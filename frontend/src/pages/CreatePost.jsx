@@ -48,8 +48,11 @@ const CreatePost = () => {
 
       //img upload
       try {
-        await axios.post(URL + "/api/upload", data);
+        const res = await axios.post(URL + "/api/upload", data, {
+          withCredentials: true,
+        });
         // console.log(imgUpload.data);
+        console.log(res.data);
       } catch (err) {
         console.log(err);
       }
