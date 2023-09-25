@@ -10,7 +10,12 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comments");
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
