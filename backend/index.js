@@ -10,7 +10,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comments");
-
+app.use(cors());
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
@@ -34,7 +34,7 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 // app.use(
 //   cors({ origin: "https://blog-app-c2th.onrender.com", credentials: true })
 // );
-app.use(cors());
+
 app.use(cookieParser());
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
