@@ -1,8 +1,8 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -10,7 +10,12 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comments");
+const corsOptions = {
+  origin: "https://blog-app-teal-zeta.vercel.app",
+  credentials: true, // Allow credentials (cookies, headers, etc.)
+};
 
+app.use(cors(corsOptions));
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
@@ -20,10 +25,10 @@ const connectDB = async () => {
   }
 };
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
