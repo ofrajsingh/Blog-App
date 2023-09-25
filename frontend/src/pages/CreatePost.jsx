@@ -59,7 +59,7 @@ const CreatePost = () => {
       navigate("/posts/post/" + res.data._id);
       // Handle res.data as needed
     } catch (err) {
-      console.error(err);
+      console.error('YES',err);
       // Handle errors appropriately
     }
   };
