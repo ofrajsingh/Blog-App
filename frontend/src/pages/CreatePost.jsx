@@ -32,7 +32,7 @@ const CreatePost = () => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-  
+
     const post = {
       title,
       desc,
@@ -40,7 +40,7 @@ const CreatePost = () => {
       userId: user._id,
       categories: cats,
     };
-  
+
     try {
       if (file) {
         const data = new FormData();
@@ -48,16 +48,14 @@ const CreatePost = () => {
         data.append("img", filename);
         data.append("file", file);
         post.photo = filename;
-  
+
         // Upload image
         await axios.post(URL + "/api/upload", data);
         // Handle imgUpload response as needed
       }
-  
+
       // Upload post
-      const res = await axios.post(URL + "/api/posts/create", post, {
-        withCredentials: true,
-      });
+      const res = await axios.post(URL + "/api/posts/create", post);
       navigate("/posts/post/" + res.data._id);
       // Handle res.data as needed
     } catch (err) {
