@@ -1,2 +1,2 @@
-export const URL = "https://blog-app-teal-zeta.vercel.app/register";
+export const URL = "http://localhost:5000";
 export const IF = "http://localhost:5000/images/";
