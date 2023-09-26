@@ -6,13 +6,16 @@ const Comment = require('../models/Comment');
 
 //Create
 router.post('/create',verifyToken, async (req,res)=>{
-    console.log("ALL OK!")
+    
     try{
-        const newPost= new Post(req.body);
+        const newPost= await new Post(req.body);
+        console.log("ALL OK!",newPost);
         const savedPost= await newPost.save();
+        
         res.status(200).json(savedPost);
     }
     catch(err){
+        
         res.status(500).json(err);
     }
 })
