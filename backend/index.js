@@ -15,6 +15,11 @@ const corsOptions = {
   credentials: true, // Allow credentials (cookies, headers, etc.)
 };
 
+// const corsOptions = {
+//   origin: "http://localhost:5173",
+//   credentials: true, // Allow credentials (cookies, headers, etc.)
+// };
+
 app.use(cors(corsOptions));
 const connectDB = async () => {
   try {
