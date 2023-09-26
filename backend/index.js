@@ -11,7 +11,7 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comments");
 const corsOptions = {
-  origin: "https://blog-app-teal-zeta.vercel.app",
+  origin: "https://blog-app-git-main-ofrajsingh.vercel.app/",
   credentials: true, // Allow credentials (cookies, headers, etc.)
 };
 
