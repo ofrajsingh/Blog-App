@@ -20,7 +20,7 @@ const corsOptions = {
 //   credentials: true, // Allow credentials (cookies, headers, etc.)
 // };
 
-app.use(cors(corsOptions));
+app.use(cors());
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
