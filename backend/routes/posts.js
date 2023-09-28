@@ -9,18 +9,10 @@ router.post('/create',verifyToken, async (req,res)=>{
     
     try{
         const newPost= await new Post(req.body);
-        console.log("ALL OK!",newPost);
-        if(newPost){
-            const savedPost= await newPost.save();
-            res.status(200).json(savedPost);
-        }
-        else{
-            console.log("Post could not be created");
-            res.status(500).json('Cannot create');
-        }
+        const savedPost= await newPost.save();
+        res.status(200).json(savedPost);
     }
-    catch(err){
-        
+    catch(err){   
         res.status(500).json(err);
     }
 })

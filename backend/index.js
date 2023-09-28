@@ -14,7 +14,10 @@ const corsOptions = {
   credentials: true,
   origin: true,
 };
-
+// const corsOptions = {
+//   origin: "http://blog-app-teal-zeta.vercel.app",
+//   credentials: true, // Allow credentials (cookies, headers, etc.)
+// };
 // const corsOptions = {
 //   origin: "http://localhost:5173",
 //   credentials: true, // Allow credentials (cookies, headers, etc.)
