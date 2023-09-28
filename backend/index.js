@@ -11,16 +11,16 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const commentRoute = require("./routes/comments");
 const corsOptions = {
-  origin: "https://blog-app-git-main-ofrajsingh.vercel.app/",
-  credentials: true, // Allow credentials (cookies, headers, etc.)
+  credentials: true,
+  origin: true,
 };
 
 // const corsOptions = {
 //   origin: "http://localhost:5173",
 //   credentials: true, // Allow credentials (cookies, headers, etc.)
 // };
-
-app.use(cors());
+dotenv.config();
+app.use(cors(corsOptions));
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 });
 
 // middlewares
-dotenv.config();
+
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use(cookieParser());
