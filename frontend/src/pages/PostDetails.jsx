@@ -36,8 +36,13 @@ const PostDetails = () => {
   }
 
   const handleDeletePost= async ()=>{
+    const token = localStorage.getItem("token");
     try{
-      const res= await axios.delete(URL+'/api/posts/'+postId,{withCredentials:true});
+      const res= await axios.delete(URL+'/api/posts/'+postId,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log(res.data);
       navigate('/');
     }
