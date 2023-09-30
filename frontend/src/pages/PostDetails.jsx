@@ -78,7 +78,8 @@ const PostDetails = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      window.location.reload(true);
+      navigate(`/posts/post/${postId}`);
+      // window.location.reload(true);
        
     }
     catch(err){
