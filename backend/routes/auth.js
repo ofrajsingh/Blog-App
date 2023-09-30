@@ -53,8 +53,8 @@ router.get('/logout',async (req,res)=>{
 
 //Refetch
 router.get('/refetch',async (req,res)=>{
-  // const token= req.cookies.token;
-  const token = localStorage.getItem("token");
+  const token= req.cookies.token;
+  // const token = localStorage.getItem("token");
   jwt.verify(token,process.env.SECRET,{},async (err,data)=>{
     if(err){
       return res.status(404).json(err);
