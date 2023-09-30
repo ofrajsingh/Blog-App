@@ -72,7 +72,7 @@ const EditPost = () => {
             console.log(err);
         }
     }
-    ;
+
     const token = localStorage.getItem("token");
     // post upload
     try{

@@ -19,6 +19,7 @@ router.post('/create',verifyToken, async (req,res)=>{
 
 //Update
 router.put('/:id',verifyToken, async (req,res)=>{
+    console.log(req);
     try{
         const updatedPost= await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
         res.status(200).json(updatedPost);
