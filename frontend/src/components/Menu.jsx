@@ -11,8 +11,13 @@ const Menu = () => {
   const navigate= useNavigate();
 
   const handleLogout= async()=>{
+    const token = localStorage.getItem("token");
     try{
-      const res= await axios.get(URL+'/api/auth/logout',{withCredentials:true});
+      const res= await axios.get(URL+'/api/auth/logout',{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUser(null);
       navigate('/login')
     }

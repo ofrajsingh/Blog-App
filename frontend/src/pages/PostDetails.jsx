@@ -71,8 +71,13 @@ const PostDetails = () => {
 
   const postComment= async(e)=>{
     e.preventDefault();
+    const token = localStorage.getItem("token");
     try{
-      const res= await axios.post(URL+'/api/comments/create/',{comment:comment,author:user.username,postId:postId,userId:user._id},{withCredentials:true});
+      const res= await axios.post(URL+'/api/comments/create/',{comment:comment,author:user.username,postId:postId,userId:user._id},{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       window.location.reload(true);
        
     }

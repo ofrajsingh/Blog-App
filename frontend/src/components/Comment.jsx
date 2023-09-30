@@ -9,8 +9,13 @@ import { UserContext } from "../context/UserContext"
 const Comment = ({c,post}) => {
   const {user}= useContext(UserContext);
   const deleteComment= async(id)=>{
+    const token = localStorage.getItem("token");
     try{
-      await axios.delete(URL+'/api/comments/'+id,{withCredentials:true});
+      await axios.delete(URL+'/api/comments/'+id,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       window.location.reload(true);
     }
     catch(err){

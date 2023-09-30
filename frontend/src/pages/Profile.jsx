@@ -31,11 +31,16 @@ const Profile = () => {
 
   const handleUserUpdate = async () => {
     setUpdated(false);
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
         URL + "/api/users/" + user._id,
         { username, email, password },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       // console.log(res.data)
       setUpdated(true);
@@ -46,9 +51,12 @@ const Profile = () => {
   };
 
   const handleUserDelete = async () => {
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(URL + "/api/users/" + user._id, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setUser(null);
       navigate("/");
