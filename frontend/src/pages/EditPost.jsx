@@ -73,9 +73,15 @@ const EditPost = () => {
         }
     }
     ;
+    const token = localStorage.getItem("token");
     // post upload
     try{
-        const res= await axios.put(URL+'/api/posts/'+postId,post,{withCredentials:true});
+
+        const res= await axios.put(URL+'/api/posts/'+postId,post,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         // console.log(res.data);
         navigate('/posts/post/'+res.data._id);
     }
