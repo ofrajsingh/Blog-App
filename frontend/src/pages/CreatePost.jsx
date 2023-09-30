@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "./../components/Footer";
@@ -53,12 +54,33 @@ const CreatePost = () => {
         await axios.post(URL + "/api/upload", data);
         // Handle imgUpload response as needed
       }
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await axios.post(URL + "/api/posts/create", post, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // Handle the response here
+        console.log("Response:", response.data);
+        navigate("/posts/post/" + response.data._id);
+        // Any other code you want to run after a successful request
+      } catch (error) {
+        // Handle errors here
+        console.error("Error:", error);
+
+        // Any other error handling code
+      }
 
       // Upload post
-      const res = await axios.post(URL + "/api/posts/create", post, {
-        withCredentials: true,
-      });
-      navigate("/posts/post/" + res.data._id);
+      // const res = await axios.post(URL + "/api/posts/create", post, {
+      //   headers: {
+      //     Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      //   },
+      // });
+      // navigate("/posts/post/" + res.data._id);
       // Handle res.data as needed
     } catch (err) {
       console.error("YES", err);
