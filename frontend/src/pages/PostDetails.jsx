@@ -13,6 +13,7 @@ import Loader from "../components/Loader";
 const PostDetails = () => {
 
   const postId= useParams().id;
+  console.log("POST ID",postId);
   const [post,setPost]= useState({});
   const {user}= useContext(UserContext);
   const [comments,setComments]= useState([]);
